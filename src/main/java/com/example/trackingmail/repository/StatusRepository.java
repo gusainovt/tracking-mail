@@ -10,6 +10,4 @@ import java.util.Optional;
 @Repository
 public interface StatusRepository extends JpaRepository<Status, Long> {
 
-    Optional<List<Status>> findStatusesByPostalItemId(Long postalItemId);
-
 }

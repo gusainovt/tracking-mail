@@ -9,7 +9,4 @@ import java.util.List;
 public interface StatusService {
     Status createStatus(PostalOffice postalOffice, Status.PostalStatus postalStatus);
 
-    StatusDto getCurrentStatus(Long postalItemId);
-
-    List<StatusDto> getPostalItemMovementHistory(Long postalItemId);
 }

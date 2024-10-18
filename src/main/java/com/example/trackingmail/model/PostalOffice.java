@@ -1,11 +1,15 @@
 package com.example.trackingmail.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "postal_office")
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostalOffice {
 
     @Id

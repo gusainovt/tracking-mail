@@ -1,13 +1,16 @@
 package com.example.trackingmail.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "postal_item")
 public class PostalItem {
 
@@ -33,5 +36,11 @@ public class PostalItem {
 
     public enum PostalType { LETTER, PACKAGE, PARCEL, POSTCARD }
 
-
+    public PostalItem(Long id, String recipientName, PostalType type, String recipientIndex, String recipientAddress) {
+        this.id = id;
+        this.recipientName = recipientName;
+        this.type = type;
+        this.recipientIndex = recipientIndex;
+        this.recipientAddress = recipientAddress;
+    }
 }

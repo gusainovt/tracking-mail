@@ -1,5 +1,6 @@
 package com.example.trackingmail.model.dto.postalOffice;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

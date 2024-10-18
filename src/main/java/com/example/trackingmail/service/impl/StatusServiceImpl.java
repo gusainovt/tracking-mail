@@ -6,8 +6,8 @@ import com.example.trackingmail.model.PostalItem;
 import com.example.trackingmail.model.PostalOffice;
 import com.example.trackingmail.model.Status;
 import com.example.trackingmail.model.dto.status.StatusDto;
-import com.example.trackingmail.repository.PostalItemRepository;
 import com.example.trackingmail.repository.StatusRepository;
+import com.example.trackingmail.service.PostalItemService;
 import com.example.trackingmail.service.StatusService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,10 +22,6 @@ import java.util.List;
 public class StatusServiceImpl implements StatusService {
 
     private final StatusRepository statusRepository;
-
-    private final PostalItemRepository itemRepository;
-
-    private final StatusMapper statusMapper;
 
     /**
      * Creates a new status and saves it in the database
@@ -42,34 +38,5 @@ public class StatusServiceImpl implements StatusService {
         status.setPostalOffice(postalOffice);
         log.info("The status has been successfully created");
         return statusRepository.save(status);
-    }
-
-    /**
-     * Returns the current status
-     * @param postalItemId The postal item ID
-     * @return {@link StatusDto}
-     */
-    @Override
-    public StatusDto getCurrentStatus(Long postalItemId) {
-        log.info("Method called: getCurrentStatus");
-        List<StatusDto> statuses = getPostalItemMovementHistory(postalItemId);
-        return statuses.get(statuses.size() - 1);
-
-    }
-
-    /**
-     * Returns the entire history of postal item movement
-     * @param postalItemId The postal item ID
-     * @return list of statuses
-     */
-    @Override
-    public List<StatusDto> getPostalItemMovementHistory(Long postalItemId) {
-        log.info("Method called: getPostalItemMovementHistory");
-        PostalItem postalItem = itemRepository.findById(postalItemId).orElseThrow(()->{
-            PostalItemNotFoundException postalItemNotFound = new PostalItemNotFoundException("The postal item not found");
-            log.error("The postal item not found", postalItemNotFound);
-            return postalItemNotFound;
-        });
-        return statusMapper.toListStatusDto(postalItem.getMovementHistory());
     }
 }
