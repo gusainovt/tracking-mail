@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  tracking-mail:
+    image: tracking-mail
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: tracking-mail
+      POSTGRES_USER: gusainov
+      POSTGRES_PASSWORD: 8889893567
+    ports:
+      - "5432:5432"

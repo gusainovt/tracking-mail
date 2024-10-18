@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tracking-mail
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tracking-mail
+    username: gusainov
+    password: 8889893567
+
+  liquibase.change-log: classpath:liquibase/changelog-master.yml
+
+logging:
+  file:
+    path: var/logs/
