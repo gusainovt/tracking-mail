@@ -1,13 +1,8 @@
 package com.example.trackingmail.service.impl;
 
-import com.example.trackingmail.exception.PostalItemNotFoundException;
-import com.example.trackingmail.mapper.StatusMapper;
-import com.example.trackingmail.model.PostalItem;
 import com.example.trackingmail.model.PostalOffice;
 import com.example.trackingmail.model.Status;
-import com.example.trackingmail.model.dto.status.StatusDto;
 import com.example.trackingmail.repository.StatusRepository;
-import com.example.trackingmail.service.PostalItemService;
 import com.example.trackingmail.service.StatusService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
