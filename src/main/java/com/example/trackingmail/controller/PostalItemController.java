@@ -73,6 +73,7 @@ public class PostalItemController {
     public ResponseEntity<PostalItemDto> receivePostalItem(@RequestParam Long postalItemId) {
         return ResponseEntity.ok(itemService.receivePostalItem(postalItemId));
     }
+
     @Operation(summary = "Get the movement history of a postal item",
             description = "Retrieves the complete movement history for the specified postal item.",
             responses = {
@@ -81,7 +82,7 @@ public class PostalItemController {
                                     schema = @Schema(implementation = List.class))),
                     @ApiResponse(responseCode = "200", description = "Postal item not found")
             })
-    @GetMapping("/movement-history/{postalItemId}")
+    @GetMapping("statuses/movement-history/{postalItemId}")
     public ResponseEntity<List<StatusDto>> getPostalItemMovementHistory(@RequestParam Long postalItemId) {
         return ResponseEntity.ok(itemService.getPostalItemMovementHistory(postalItemId));
     }
@@ -94,8 +95,9 @@ public class PostalItemController {
                                     schema = @Schema(implementation = StatusDto.class))),
                     @ApiResponse(responseCode = "404", description = "Postal item not found")
             })
-    @GetMapping("/{postalItemId}")
+    @GetMapping("statuses/{postalItemId}")
     public ResponseEntity<StatusDto> getPostalItemStatus(@RequestParam Long postalItemId) {
         return ResponseEntity.ok(itemService.getCurrentStatus(postalItemId));
     }
+
 }
